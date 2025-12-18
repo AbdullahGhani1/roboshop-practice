@@ -96,3 +96,24 @@ systemctl daemon-reload
 systemctl enable user
 systemctl start user
 ```
+
+we need to load the schema we need to install mongodb client.
+
+To have it installed we can setup MongoDB repo and install mongodb-client
+
+```ini
+[mongodb-org-4.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
+gpgcheck=0
+enabled=1
+```
+
+#### Load Schema
+
+Install the shell and load the `user.js` schema file.
+
+```bash
+yum install mongodb-org-shell -y
+mongo --host <MONGODB-SERVER-IPADDRESS> </app/schema/user.js
+```
